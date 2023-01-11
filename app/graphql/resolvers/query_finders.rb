@@ -9,7 +9,7 @@ module Resolvers
     def filter_name(name)
       return db_query if name.blank?
 
-      @db_query = db_query.where('NAME LIKE ?', "%#{name}%")
+      @db_query = db_query.where('NAME ILIKE ?', "%#{name}%")
     end
 
     def filter_date_range(starts_at, ends_at)

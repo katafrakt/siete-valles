@@ -18,7 +18,7 @@ describe Rewards::Checker do
 
       before { 3.times { create(:activity, event: event, receiver: receiver) } }
 
-      it { expect(receiver.reward_ids).to eq [Achievement.first.id] }
+      it { expect(receiver.reward_ids).to eq [Reward.first.id] }
       it { expect(Achievement.count).to eq 1 }
     end
 
@@ -31,7 +31,7 @@ describe Rewards::Checker do
 
       before { 3.times { create(:activity, event: event, receiver: receiver) } }
 
-      it { expect(receiver.reward_ids).to eq [Achievement.first.id] }
+      it { expect(receiver.reward_ids).to eq [Reward.first.id] }
       it { expect(Achievement.count).to eq 1 }
     end
 
@@ -61,7 +61,7 @@ describe Rewards::Checker do
         before { 3.times { create(:activity, event: event, receiver: receiver) } }
 
         it { is_expected.to be_empty }
-        it { expect(receiver.reward_ids).to eq [Achievement.first.id] }
+        it { expect(receiver.reward_ids).to eq [Reward.first.id] }
       end
 
       context 'when conditions are not met' do
@@ -72,7 +72,7 @@ describe Rewards::Checker do
         before { 3.times { create(:activity, event: event, receiver: receiver) } }
 
         it { is_expected.to be_empty }
-        it { expect(receiver.reward_ids).to eq [Achievement.first.id] }
+        it { expect(receiver.reward_ids).to eq [Reward.first.id] }
       end
     end
   end

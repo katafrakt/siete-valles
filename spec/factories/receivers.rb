@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :receiver do
-    external_id { Faker::Science.element }
+    external_id { SecureRandom.hex(16) }
   end
 end
