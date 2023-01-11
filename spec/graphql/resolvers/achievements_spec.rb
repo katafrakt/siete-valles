@@ -42,6 +42,19 @@ describe Resolvers::Achievements, type: :request do
       }
     GQL
   end
+  let(:find_by_receiver_external_id) do
+    <<~GQL
+      query {
+        achievements(receiverExternalId: "#{query_string}") {
+          id
+          receiver {
+            externalId
+            points
+          }
+        }
+      }
+    GQL
+  end
 
   let!(:achievement1) { create(:achievement) }
   let!(:achievement2) { create(:achievement) }
@@ -77,6 +90,15 @@ describe Resolvers::Achievements, type: :request do
       it { is_expected.to_not match(array_including(a_hash_including('receiver' => { 'externalId' => achievement1.receiver.external_id, 'points' => achievement1.receiver.points }))) }
       it { is_expected.to_not match(array_including(a_hash_including('receiver' => { 'externalId' => achievement2.receiver.external_id, 'points' => achievement2.receiver.points }))) }
       it { is_expected.to match(array_including(a_hash_including('receiver' => { 'externalId' => achievement3.receiver.external_id, 'points' => achievement3.receiver.points }))) }
+    end
+
+    context 'filtering by external id' do
+      let(:query) { find_by_receiver_external_id }
+      let(:query_string) { achievement1.receiver.external_id }
+
+      it { is_expected.to match(array_including(a_hash_including('receiver' => { 'externalId' => achievement1.receiver.external_id, 'points' => achievement1.receiver.points }))) }
+      it { is_expected.to_not match(array_including(a_hash_including('receiver' => { 'externalId' => achievement2.receiver.external_id, 'points' => achievement2.receiver.points }))) }
+      it { is_expected.to_not match(array_including(a_hash_including('receiver' => { 'externalId' => achievement3.receiver.external_id, 'points' => achievement3.receiver.points }))) }
     end
   end
 end

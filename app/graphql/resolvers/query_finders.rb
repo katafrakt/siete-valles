@@ -24,6 +24,12 @@ module Resolvers
       @db_query = db_query.includes(:receiver).where(receivers: { uuid: receiver_id })
     end
 
+    def filter_receiver_by_external_id(external_id)
+      return if external_id.blank?
+
+      @db_query = db_query.includes(:receiver).where(receivers: { external_id: external_id })
+    end
+
     def filter_reward(reward_id)
       return if reward_id.blank?
 
