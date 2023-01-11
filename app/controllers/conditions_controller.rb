@@ -9,6 +9,7 @@ class ConditionsController < ApplicationController
 
   def new
     @rule = rule
+    @condition = Condition.new
   end
 
   def edit
