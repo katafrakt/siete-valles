@@ -10,10 +10,9 @@ jobs:
       - image: circleci/ruby:3.0.2-node
         environment:
           - RAILS_ENV=test
-      - image: circleci/mysql:5.7
+      - image: cimg/postgres:15.1
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD=true
-          - MYSQL_ROOT_HOST=%
+          POSTGRES_USER: postgres
       - image: circleci/redis:6.2.1
 
     working_directory: ~/repo
