@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_11_17_163338) do
 
-  create_table "achievements", charset: "utf8mb3", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.bigint "receiver_id"
     t.bigint "reward_id"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_achievements_on_uuid"
   end
 
-  create_table "activities", charset: "utf8mb3", force: :cascade do |t|
+  create_table "activities", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.bigint "receiver_id"
     t.bigint "event_id"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_activities_on_uuid"
   end
 
-  create_table "conditions", charset: "utf8mb3", force: :cascade do |t|
+  create_table "conditions", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.bigint "rule_id"
     t.integer "operation"
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_conditions_on_uuid"
   end
 
-  create_table "events", charset: "utf8mb3", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.string "name", limit: 50, null: false
     t.text "description"
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_events_on_uuid"
   end
 
-  create_table "receivers", charset: "utf8mb3", force: :cascade do |t|
+  create_table "receivers", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.string "external_id"
     t.integer "points", default: 0
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_receivers_on_uuid"
   end
 
-  create_table "rewards", charset: "utf8mb3", force: :cascade do |t|
+  create_table "rewards", force: :cascade do |t|
     t.integer "category"
     t.string "uuid", limit: 36, null: false
     t.string "name", limit: 50, null: false
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_163338) do
     t.index ["uuid"], name: "index_rewards_on_uuid"
   end
 
-  create_table "rules", charset: "utf8mb3", force: :cascade do |t|
+  create_table "rules", force: :cascade do |t|
     t.string "uuid", limit: 36, null: false
     t.string "name", limit: 50, null: false
     t.bigint "reward_id"

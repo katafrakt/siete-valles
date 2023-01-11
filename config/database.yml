@@ -1,11 +1,11 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   pool: 10
-  username: <%= ENV['DB_USERNAME'] || 'root' %>
-  password: <%= ENV['DB_PASSWORD'] || 'root' %>
+  username: <%= ENV['DB_USERNAME'] || 'postgres' %>
+  password: <%= ENV['DB_PASSWORD'] || 'postgres' %>
   reconnect: true
-  host: <%= ENV['DB_HOST'] || '127.0.0.1' %>
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
 
 development:
   <<: *default

@@ -6,7 +6,7 @@ ruby '3.0.2'
 gem 'graphql'
 gem 'importmap-rails', '>= 0.3.4'
 gem 'kaminari'
-gem 'mysql2'
+gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.0.alpha2'
 gem 'redis', '~> 4.0'
@@ -14,7 +14,7 @@ gem 'sidekiq'
 gem 'stimulus-rails', '>= 0.4.0'
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem 'tailwindcss-rails', '>= 0.4.3'
-gem 'turbo-rails', '>= 0.7.11'
+gem 'turbo-rails', '~> 0.7.11'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
