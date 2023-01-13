@@ -15,6 +15,7 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database/siete_valles
+      WEBHOOK_NOTIFICATION_URL: https://hackathon-gamificati-api.teamwalnut.com/webhook/gmfy
     ports:
       - "${PORT}:3000"
     depends_on:
