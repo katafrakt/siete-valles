@@ -2,6 +2,7 @@ module Types
   class RewardType < Types::BaseObject
     field :id, String, null: false, method: :uuid
     field :name, String, null: false
+    field :description, String
     field :category, String, null: false
     field :active, Boolean, null: false
     field :image_url, String, null: true
