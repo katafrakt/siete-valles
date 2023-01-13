@@ -15,6 +15,7 @@ gem 'stimulus-rails', '>= 0.4.0'
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem 'tailwindcss-rails', '>= 0.4.3'
 gem 'turbo-rails', '~> 0.7.11'
+gem 'http'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

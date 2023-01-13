@@ -12,6 +12,7 @@ module Achievements
           reward_id: reward.uuid,
           receiver_id: activity.receiver.external_id
         )
+        RewardNotifyJob.perform_later(reward, activity.receiver)
       end
     end
 
