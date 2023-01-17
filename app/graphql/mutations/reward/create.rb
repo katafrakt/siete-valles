@@ -5,6 +5,7 @@ module Mutations
 
       argument :name, String, required: true
       argument :category, String, required: true
+      argument :image_url, String, required: false
 
       field :errors, [String], null: true
       field :reward, Types::RewardType, null: true

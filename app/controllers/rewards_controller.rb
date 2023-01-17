@@ -44,7 +44,7 @@ class RewardsController < ApplicationController
   private
 
   def reward_params
-    params.require(:reward).permit(%i[name category description])
+    params.require(:reward).permit(%i[name category description image_url])
   end
 
   def update_params
