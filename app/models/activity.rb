@@ -19,6 +19,6 @@ class Activity < ApplicationRecord
   end
 
   def check_for_new_rewards
-    AchievementsJob.perform_later(self)
+    AchievementsJob.set(wait: 2.second).perform_later(self)
   end
 end
